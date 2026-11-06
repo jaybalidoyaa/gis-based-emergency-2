@@ -1,0 +1,35 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "gis-based-emergency-dispatch-system",
+  "main": "worker/index.ts",
+  "compatibility_date": "2026-09-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "observability": {
+    "enabled": true
+  },
+  "assets": {
+    "directory": "./client/dist",
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application",
+    "run_worker_first": ["/api/*"]
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "barangay-dispatch-db",
+      "database_id": "48bc5c93-3f05-463d-a678-131d70d21372"
+    }
+  ],
+  "r2_buckets": [
+    {
+      "binding": "MEDIA",
+      "bucket_name": "barangay-dispatch-media"
+    }
+  ],
+  "vars": {
+    "APP_NAME": "Barangay Sun Valley Dispatch System",
+    "MAPBOX_ACCESS_TOKEN": "pk.eyJ1IjoiamF5YjIxIiwiYSI6ImNtcDNwMXg0MTAxMDcycnByb2wwYXhtcXkifQ.NT76oFq5r0TGSzmN5LcKTw",
+    "VAPID_PUBLIC_KEY": "BHx8_vUPnobul2Cn_LDDk0NAHGVKLR1XlbX2s4BBm-lxLU-WvBOFPAnpV5k9iYmrSynRi1XXvg8anuwxIWUY4jM",
+    "VAPID_SUBJECT": "mailto:admin@sunvalley.gov.ph"
+  }
+}

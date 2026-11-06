@@ -1,0 +1,11 @@
+node_modules
+.git
+.env
+.env.local
+client/dist
+server/dist
+coverage
+uploads
+*.log
+.vite
+docs

@@ -1,0 +1,36 @@
+CREATE TABLE IF NOT EXISTS system_settings (
+  key TEXT PRIMARY KEY,
+  value TEXT NOT NULL,
+  updated_at TEXT NOT NULL DEFAULT (datetime('now'))
+);
+
+INSERT OR IGNORE INTO system_settings (key, value) VALUES
+  ('barangayName', 'Sun Valley'),
+  ('city', 'Paranaque City'),
+  ('province', 'Metro Manila'),
+  ('address', 'Sun Valley, Paranaque City, Metro Manila'),
+  ('timeZone', 'Asia/Manila (GMT+8)'),
+  ('dateFormat', 'MM/DD/YYYY'),
+  ('language', 'English'),
+  ('timeFormat', '24'),
+  ('systemName', 'Barangay Sun Valley Dispatch System'),
+  ('systemShortName', 'SVFAR GDRRS'),
+  ('mapCenterLat', '14.485'),
+  ('mapCenterLng', '121.038'),
+  ('mapZoom', '14'),
+  ('itemsPerPage', '25'),
+  ('sessionTimeout', '30'),
+  ('offlineMode', 'true'),
+  ('announcement', 'Welcome to Barangay Sun Valley Emergency Dispatch System.'),
+  ('displayAnnouncement', 'true'),
+  ('announcementExpires', ''),
+  ('themeMode', 'dark'),
+  ('primaryColor', '#1E88E5'),
+  ('sidebarStyle', 'Compact'),
+  ('layoutWidth', 'Full Width'),
+  ('fontSize', 'Medium'),
+  ('twoFactor', 'true'),
+  ('strongPassword', 'true'),
+  ('loginAttemptLimit', 'true'),
+  ('sessionMonitoring', 'true'),
+  ('ipRestriction', 'false');

@@ -1,0 +1,55 @@
+{
+  "name": "gis-based-emergency-dispatch-system",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Barangay Sun Valley GIS-Based Emergency Dispatch and Responder Coordination System",
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev -w server\" \"npm run dev -w client\"",
+    "dev:server": "npm run dev -w server",
+    "dev:client": "npm run dev -w client",
+    "build": "npm run build -w server && npm run build -w client",
+    "build:client": "npm run build -w client",
+    "deploy": "npm run build:client && wrangler deploy",
+    "db:migrate": "node worker/apply-sql.js schema",
+    "db:migrate:v2": "node worker/apply-sql.js migrate",
+    "db:migrate:v3": "node worker/apply-sql.js migrate-v3-types",
+    "db:migrate:v4": "node worker/apply-sql.js migrate-v4",
+    "db:migrate:v5": "node worker/apply-sql.js migrate-v5",
+    "db:migrate:v6": "node worker/apply-sql.js migrate-v6-facility-pins",
+    "db:migrate:v7": "node worker/apply-sql.js migrate-v7-unit-bemo",
+    "db:migrate:v8": "node worker/apply-sql.js migrate-v8-push-subscriptions",
+    "db:migrate:v9": "node worker/apply-sql.js migrate-v9-notification-tracking",
+    "db:migrate:v10": "node worker/apply-sql.js migrate-v10-attendance-leave",
+    "db:migrate:v11": "node worker/apply-sql.js migrate-v11-system-settings",
+    "db:migrate:v12": "node worker/apply-sql.js migrate-v12-ncr-hospitals",
+    "db:migrate:v13": "node worker/apply-sql.js migrate-v13-ops-accounts",
+    "db:migrate:v14": "node worker/apply-sql.js migrate-v14-reconcile-terminal-assignments",
+    "db:migrate:v15": "node worker/apply-sql.js migrate-v15-training-flag",
+    "db:migrate:v16": "node worker/apply-sql.js migrate-v16-transport-coords",
+    "db:migrate:v17": "node worker/apply-sql.js migrate-v17-responder-ops",
+    "db:migrate:v18": "node worker/apply-sql.js migrate-v18-team-unit-change",
+    "db:seed": "node worker/apply-sql.js seed",
+    "seed": "npm run seed -w server",
+    "test": "npm run test -w server && npm run test -w client && npx vitest run --config vitest.worker.config.ts",
+    "test:e2e": "npx playwright test",
+    "test:e2e:install": "npx playwright install chromium"
+  },
+  "dependencies": {
+    "hono": "^4.7.4",
+    "jose": "^6.0.10",
+    "web-push": "^3.6.7"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.62.1",
+    "@types/web-push": "^3.6.4",
+    "concurrently": "^9.1.2",
+    "wrangler": "^4.28.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
